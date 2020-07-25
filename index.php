@@ -7,7 +7,7 @@
     <title>Blog</title>
 </head>
 <body>
-    <h1>Mon super blog de foufou!</h1>  
+    <h1>Mon super blog!</h1>  
     <?php
         try
         {
