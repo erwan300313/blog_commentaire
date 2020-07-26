@@ -41,10 +41,22 @@
                 {
                     die('Erreur : '.$e->getMessage());
                 }
+                if($_GET['page'] == 1)
+                {    
+                    $reponse = $bdd->prepare('SELECT id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, "%d/%m/%y à %Hh%i") AS date FROM commentaire WHERE id_billet = ? ORDER BY date_commentaire DESC LIMIT 0,5');
+                    $reponse->execute(array($_GET['id_billet']));
+                }
+                else if($_GET['page'] == 2)
+                {
+                    $reponse = $bdd->prepare('SELECT id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, "%d/%m/%y à %Hh%i") AS date FROM commentaire WHERE id_billet = ? ORDER BY date_commentaire DESC LIMIT 5,5');
+                    $reponse->execute(array($_GET['id_billet'])); 
 
-                $reponse = $bdd->prepare('SELECT id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, "%d/%m/%y à %Hh%i") AS date FROM commentaire WHERE id_billet = ? ORDER BY date_commentaire DESC LIMIT 0,5');
-                $reponse->execute(array($_GET['id_billet']));
-
+                }
+                else if($_GET['page'] == 3)
+                {
+                    $reponse = $bdd->prepare('SELECT id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, "%d/%m/%y à %Hh%i") AS date FROM commentaire WHERE id_billet = ? ORDER BY date_commentaire DESC LIMIT 10,5');
+                    $reponse->execute(array($_GET['id_billet']));
+                }
                 echo '<h2>Commentaires</h2>';
                 
                 while ($donnees = $reponse->fetch())
