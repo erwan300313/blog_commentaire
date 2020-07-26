@@ -50,13 +50,12 @@
                 while ($donnees = $reponse->fetch())
                 {
             ?>
-
-            <div class="commentaire">
-                <p>
-                    <?php echo $donnees['auteur'];?> le <?php echo $donnees['date'] ;?> <br/>
-                    <?php echo $donnees['commentaire']; ?>
-                </p>
-            </div>
+                <div class="commentaire">
+                    <p>
+                        <?php echo $donnees['auteur'];?> le <?php echo $donnees['date'] ;?> <br/>
+                        <?php echo $donnees['commentaire']; ?>
+                    </p>
+                </div>
             <?php
                 }
                 $reponse->closeCursor();
@@ -67,6 +66,13 @@
             echo 'il y à un probleme veuillez revenir à la page précedente.';
         }
         ?>
+
+    <p><strong>Page commentaire : </strong>
+        <a href="commentaires.php?page=1&amp;id_billet=<?php echo $_GET['id_billet'];?>">1</a>
+        <a href="commentaires.php?page=2&amp;id_billet=<?php echo $_GET['id_billet'];?>">2</a>
+        <a href="commentaires.php?page=3&amp;id_billet=<?php echo $_GET['id_billet'];?>">3</a>
+        <a href="commentaires.php?page=4&amp;id_billet=<?php echo $_GET['id_billet'];?>">4</a>    
+    </p>
 
     <h2>Ajouter un commentaire.</h2>
         <form method="post" action="commentaires_post.php">
