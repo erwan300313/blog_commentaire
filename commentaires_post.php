@@ -33,13 +33,9 @@
                 'commentaire' => $_POST['message']
                 ));
 
-                header('Location:commentaires.php?id_billet=' . $_POST['id_billet']);
+                header('Location:commentaires.php?page=1&id_billet=' . $_POST['id_billet']);
         }
-        
 	?>
 
 </body>
 </html>
-
-
-   
